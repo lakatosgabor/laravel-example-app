@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Form, Head } from '@inertiajs/vue3';
+import { Form, Head, usePage  } from '@inertiajs/vue3';
 import Heading from '@/components/Heading.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/settings/Layout.vue';
@@ -7,17 +7,18 @@ import { edit } from '@/routes/language';
 import type { BreadcrumbItem } from '@/types';
 import LanguageController from '@/actions/App/Http/Controllers/Settings/LanguageController';
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
 import InputError from '@/components/InputError.vue';
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+import {Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue} from "@/components/ui/select"
+
+const props = defineProps({
+    currentLanguage: {
+        type: String
+    },
+    successUpdate: {
+        type: String,
+        default: null
+    }
+});
 
 const breadcrumbItems: BreadcrumbItem[] = [
     {
@@ -30,13 +31,11 @@ const items = [
   { label: "Magyar", value: "hu" },
   { label: "English", value: "en" },
 ]
-
 </script>
 
 <template>
     <AppLayout :breadcrumbs="breadcrumbItems">
         <Head title="Language settings" />
-
         <SettingsLayout>
             <div class="space-y-6">
                 <Heading
@@ -57,7 +56,7 @@ const items = [
                     v-slot="{ errors, processing, recentlySuccessful }"
                 >
                     <div class="grid gap-2">
-                        <Select name="language">
+                        <Select name="language" :default-value="currentLanguage">
                             <SelectTrigger class="w-full max-w-xs">
                                 <SelectValue placeholder="Choose language" />
                             </SelectTrigger>
@@ -90,7 +89,7 @@ const items = [
                                 v-show="recentlySuccessful"
                                 class="text-sm text-neutral-600"
                             >
-                                Saved.
+                                {{successUpdate}}!
                             </p>
                         </Transition>
                     </div>
