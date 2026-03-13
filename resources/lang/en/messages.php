@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'Language updated' => 'Language updated',
+    'language_updated' => 'Language updated',
 ];

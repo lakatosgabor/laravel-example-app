@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'Language updated' => 'Az alkalmazás nyelve módosítva sikeresen módosítva lett!',
+    'language_updated' => 'Az alkalmazás nyelve módosítva sikeresen módosítva lett!',
 ];

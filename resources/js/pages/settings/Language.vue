@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Form, Head, usePage  } from '@inertiajs/vue3';
+import { Form, Head } from '@inertiajs/vue3';
 import Heading from '@/components/Heading.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/settings/Layout.vue';
@@ -31,17 +31,18 @@ const items = [
   { label: "Magyar", value: "hu" },
   { label: "English", value: "en" },
 ]
+
 </script>
 
 <template>
     <AppLayout :breadcrumbs="breadcrumbItems">
-        <Head title="Language settings" />
+        <Head :title="$t('language_settings')" />
         <SettingsLayout>
             <div class="space-y-6">
                 <Heading
                     variant="small"
-                    title="Language settings"
-                    description="Update your account's language settings"
+                    :title="$t('language_settings')"
+                    :description="$t('language_settings_description')"
                 />
                 <Form
                     v-bind="LanguageController.update.form()"
@@ -62,7 +63,7 @@ const items = [
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectGroup>
-                                    <SelectLabel>Languages</SelectLabel>
+                                    <SelectLabel>{{ $t('languages') }}</SelectLabel>
                                     <SelectItem v-for="item in items" :key="item.value" :value="item.value">
                                     {{ item.label }}
                                     </SelectItem>
@@ -76,7 +77,7 @@ const items = [
                         <Button
                             :disabled="processing"
                             data-test="update-language-button"
-                            >Save</Button
+                            >{{ $t('save') }}</Button
                         >
 
                         <Transition

@@ -8,7 +8,6 @@ use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
 
-
 class LanguageController extends Controller
 {
     public function edit(): Response{
@@ -18,15 +17,21 @@ class LanguageController extends Controller
         ]);
     }
 
-    public function update(Request $request): RedirectResponse{
+    public function update(Request $request): RedirectResponse {
         $request->validate([
             'language' => 'required|string|in:en,hu',
         ]);
-        
-        $request->user()->update([
-            'locale' => $request->language,
-        ]);
 
-        return back()->with('successUpdate', __('messages.Language updated'));
+        $lang = $request->language;
+
+        if ($request->user()) {
+            $request->user()->update(['locale' => $lang]);
+        } else {
+            session(['locale' => $lang]);
+        }
+
+        app()->setLocale($lang);
+
+        return back()->with('successUpdate', __('messages.language_updated'));
     }
 }

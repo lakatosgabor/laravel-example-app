@@ -13,9 +13,11 @@ class SetLocale
      *
      * @param  Closure(Request): (Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
-    {
-        $locale = $request->user()?->locale ?? config('app.locale');
+    public function handle(Request $request, Closure $next): Response{
+        $locale = $request->user()?->locale 
+                ?? session('locale') 
+                ?? config('app.locale');
+
         app()->setLocale($locale);
 
         return $next($request);
