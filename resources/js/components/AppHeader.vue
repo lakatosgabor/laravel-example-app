@@ -36,6 +36,7 @@ import { useCurrentUrl } from '@/composables/useCurrentUrl';
 import { getInitials } from '@/composables/useInitials';
 import { toUrl } from '@/lib/utils';
 import { dashboard } from '@/routes';
+import { views as permissions } from '@/routes/permissions';
 import type { BreadcrumbItem, NavItem } from '@/types';
 
 type Props = {

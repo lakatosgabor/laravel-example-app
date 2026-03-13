@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
 
+
 class LanguageController extends Controller
 {
     public function edit(): Response{
