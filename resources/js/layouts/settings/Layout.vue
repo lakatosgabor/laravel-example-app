@@ -10,6 +10,8 @@ import { edit as editProfile } from '@/routes/profile';
 import { show } from '@/routes/two-factor';
 import { edit as editPassword } from '@/routes/user-password';
 import type { NavItem } from '@/types';
+import { edit as editLanguage } from '@/routes/language';
+
 
 const sidebarNavItems: NavItem[] = [
     {
@@ -27,6 +29,10 @@ const sidebarNavItems: NavItem[] = [
     {
         title: 'Appearance',
         href: editAppearance(),
+    },
+    {
+        title: 'Language',
+        href: editLanguage(),
     },
 ];
 
