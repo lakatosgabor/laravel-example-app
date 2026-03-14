@@ -6,6 +6,9 @@ import '../css/app.css';
 import { initializeTheme } from '@/composables/useAppearance';
 import { i18n } from './i18n';
 
+import Vue3EasyDataTable from 'vue3-easy-data-table';
+import 'vue3-easy-data-table/dist/style.css';
+
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
@@ -28,11 +31,11 @@ createInertiaApp({
             }
         });
         
-        const vueApp = createApp({ render: () => h(App, props) })
+        createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(i18n);
-
-        vueApp.mount(el);
+            .use(i18n)
+            .component('EasyDataTable', Vue3EasyDataTable)
+            .mount(el);
     },
     progress: {
         color: '#4B5563',

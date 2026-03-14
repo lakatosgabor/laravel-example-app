@@ -30,16 +30,16 @@ const { isCurrentOrParentUrl } = useCurrentUrl();
 </script>
 
 <template>
-    <div class="px-4 py-6">
+    <div class="px-4 py-6 md:px-8">
         <Heading
             title="Admin panel"
             description="Manage your users and permissions settings"
         />
 
-        <div class="flex flex-col lg:flex-row lg:space-x-12">
-            <aside class="w-full max-w-xl lg:w-48">
+        <div class="flex flex-col lg:flex-row lg:space-x-12 mt-6">
+            <aside class="w-full lg:w-40 flex-shrink-0">
                 <nav
-                    class="flex flex-col space-y-1 space-x-0"
+                    class="flex flex-col space-y-1"
                     aria-label="Settings"
                 >
                     <Button
@@ -53,7 +53,7 @@ const { isCurrentOrParentUrl } = useCurrentUrl();
                         as-child
                     >
                         <Link :href="item.href">
-                            <component :is="item.icon" class="h-4 w-4" />
+                            <component :is="item.icon" v-if="item.icon" class="mr-2 h-4 w-4" />
                             {{ item.title }}
                         </Link>
                     </Button>
@@ -62,8 +62,8 @@ const { isCurrentOrParentUrl } = useCurrentUrl();
 
             <Separator class="my-6 lg:hidden" />
 
-            <div class="flex-1 md:max-w-2xl">
-                <section class="max-w-xl space-y-12">
+            <div class="flex-1 "> 
+                <section class="space-y-6">
                     <slot />
                 </section>
             </div>
