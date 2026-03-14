@@ -49,6 +49,11 @@ if (isSuperAdmin) {
     href: '/log-viewer',
     icon: FolderGit2,
   });
+footerNavItems.push({
+    title: 'Scheduler logs',
+    href: '/totem',
+    icon: FolderGit2,
+  });
 }
 
 </script>
