@@ -28,6 +28,12 @@ class AppServiceProvider extends ServiceProvider
         Gate::before(function ($user, $ability) {
             return $user->hasRole('super-admin') ? true : null;
         });
+
+        // Log Viewer hozzáférés szabályozása
+        Gate::define('viewLogViewer', function (User $user) {
+            // Csak akkor engedjük be, ha be van jelentkezve ÉS super-user
+            return $user->hasRole('super-admin');
+        });
     }
 
     /**

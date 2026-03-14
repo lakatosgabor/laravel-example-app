@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-vue-next';
+import { usePage, Link } from '@inertiajs/vue3';
+import { FolderGit2, LayoutGrid } from 'lucide-vue-next';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -18,6 +18,11 @@ import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
 import { views as admin } from '@/routes/admin';
 
+const page = usePage();
+const user = page.props.auth?.user;
+console.log(user.roles);
+const isSuperAdmin = user.roles.includes('super-admin');
+
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
@@ -32,17 +37,21 @@ const mainNavItems: NavItem[] = [
 ];
 
 const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        href: 'https://github.com/laravel/vue-starter-kit',
-        icon: FolderGit2,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#vue',
-        icon: BookOpen,
+        {
+        title: 'GL solutions',
+        href: "https://glsolutions.hu",
+        icon: LayoutGrid,
     },
 ];
+
+if (isSuperAdmin) {
+  footerNavItems.push({
+    title: 'System error logs',
+    href: '/log-viewer',
+    icon: FolderGit2,
+  });
+}
+
 </script>
 
 <template>
