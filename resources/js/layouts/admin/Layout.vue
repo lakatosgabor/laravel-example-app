@@ -8,6 +8,7 @@ import { toUrl } from '@/lib/utils';
 import { views as admin } from '@/routes/admin';
 import { views as permissions } from '@/routes/permissions';
 import { views as users } from '@/routes/users';
+import { views as activities } from '@/routes/activities';
 import type { NavItem } from '@/types';
 
 
@@ -23,6 +24,10 @@ const sidebarNavItems: NavItem[] = [
     {
         title: 'Permissions',
         href: permissions(),
+    },
+    {
+        title: 'Activities',
+        href: activities(),
     },
 ];
 

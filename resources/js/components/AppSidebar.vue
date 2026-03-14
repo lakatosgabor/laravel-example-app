@@ -20,7 +20,6 @@ import { views as admin } from '@/routes/admin';
 
 const page = usePage();
 const user = page.props.auth?.user;
-console.log(user.roles);
 const isSuperAdmin = user.roles.includes('super-admin');
 
 const mainNavItems: NavItem[] = [
