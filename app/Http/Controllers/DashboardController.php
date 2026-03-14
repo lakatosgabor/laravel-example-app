@@ -9,8 +9,21 @@ use Inertia\Response;
 class DashboardController extends Controller
 {
     public function admin(): Response{
+        $chartData = [
+                'labels' => ['Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek'],
+                'datasets' => [
+                    [
+                        'label' => 'Sikeres Jobok',
+                        'backgroundColor' => '#4F46E5', // Tailwind Indigo 600
+                        'borderRadius' => 6,
+                        'data' => [12, 19, 3, 5, 2] // Itt jöhetnek az adatbázisból az adatok
+                    ]
+                ]
+        ];
+
         return Inertia::render('Dashboard', [
             'notifications' => $this->getNotifications(),
+            'chartData' => $chartData,
         ]);
     }
 
