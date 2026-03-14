@@ -36,24 +36,29 @@ const mainNavItems: NavItem[] = [
 ];
 
 const footerNavItems: NavItem[] = [
-        {
+    {
         title: 'GL solutions',
         href: "https://glsolutions.hu",
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Chat',
+        href: "#",
         icon: LayoutGrid,
     },
 ];
 
 if (isSuperAdmin) {
-  footerNavItems.push({
-    title: 'System error logs',
-    href: '/log-viewer',
-    icon: FolderGit2,
-  });
-footerNavItems.push({
-    title: 'Scheduler logs',
-    href: '/totem',
-    icon: FolderGit2,
-  });
+    footerNavItems.push({
+        title: 'System error logs',
+        href: '/log-viewer',
+        icon: FolderGit2,
+    });
+    footerNavItems.push({
+        title: 'Scheduler logs',
+        href: '/totem',
+        icon: FolderGit2,
+    });
 }
 
 </script>
