@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { usePage, Link } from '@inertiajs/vue3';
-import { FolderGit2, LayoutGrid } from 'lucide-vue-next';
+import { FolderGit2, LayoutGrid, ShieldHalf, ExternalLink, MonitorCog, MessagesSquare } from 'lucide-vue-next';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -31,7 +31,7 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Admin',
         href: admin(),
-        icon: LayoutGrid,
+        icon: ShieldHalf,
     },
 ];
 
@@ -39,12 +39,12 @@ const footerNavItems: NavItem[] = [
     {
         title: 'GL solutions',
         href: "https://glsolutions.hu",
-        icon: LayoutGrid,
+        icon: ExternalLink,
     },
     {
         title: 'Chat',
         href: "#",
-        icon: LayoutGrid,
+        icon: MessagesSquare,
     },
 ];
 
@@ -52,12 +52,7 @@ if (isSuperAdmin) {
     footerNavItems.push({
         title: 'System error logs',
         href: '/log-viewer',
-        icon: FolderGit2,
-    });
-    footerNavItems.push({
-        title: 'Scheduler logs',
-        href: '/totem',
-        icon: FolderGit2,
+        icon: MonitorCog,
     });
 }
 
