@@ -13,16 +13,16 @@ import { login } from '@/routes';
       class="flex flex-col items-center justify-center rounded-3xl bg-white/90 p-12 shadow-2xl backdrop-blur-md dark:bg-black/60 dark:text-white transition-all"
     >
       <h1 class="mb-6 text-3xl font-semibold text-gray-900 dark:text-white">
-        Welcome here!
+        {{ $t('welcome_here') }}
       </h1>
       <p class="mb-8 text-center text-gray-700 dark:text-gray-300">
-        Access your application dashboard and manage your projects easily.
+        {{ $t('welcome_desc') }}
       </p>
       <Link
         :href="login()"
         class="text-center w-full rounded-lg bg-[#7bc47f] px-6 py-3 text-lg font-medium text-white shadow-lg hover:bg-[#5ea35a] transition-colors"
       >
-        Login
+        {{ $t('login') }}
       </Link>
     </div>
   </div>

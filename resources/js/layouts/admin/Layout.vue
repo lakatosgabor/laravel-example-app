@@ -10,23 +10,25 @@ import { views as permissions } from '@/routes/permissions';
 import { views as users } from '@/routes/users';
 import { views as activities } from '@/routes/activities';
 import type { NavItem } from '@/types';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 
 const sidebarNavItems: NavItem[] = [
     {
-        title: 'Admin panel',
+        title: t('admin_panel'),
         href: admin(),
     },
     {
-        title: 'Users',
+        title: t('users'),
         href: users(),
     },
     {
-        title: 'Permissions',
+        title: t('permissions'),
         href: permissions(),
     },
     {
-        title: 'Activities',
+        title: t('activities'),
         href: activities(),
     },
 ];
@@ -37,8 +39,8 @@ const { isCurrentOrParentUrl } = useCurrentUrl();
 <template>
     <div class="px-4 py-6 md:px-8">
         <Heading
-            title="Admin panel"
-            description="Manage your users and permissions settings"
+            :title="t('admin_panel')"
+            :description="t('admin_activities_desc')"
         />
 
         <div class="flex flex-col lg:flex-row lg:space-x-12 mt-6">

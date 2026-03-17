@@ -24,7 +24,7 @@ import { Label } from '@/components/ui/label';
             <Dialog>
                 <DialogTrigger as-child>
                     <Button variant="default" data-test="create-user-button"
-                        >Create User</Button
+                        >{{ $t('create_user') }}</Button
                     >
                 </DialogTrigger>
                 <DialogContent>
@@ -39,35 +39,35 @@ import { Label } from '@/components/ui/label';
                     >
                         <DialogHeader class="space-y-3">
                             <DialogTitle
-                                >Create new user</DialogTitle
+                                >{{ $t('create_user') }}</DialogTitle
                             >
                             <DialogDescription>
-                                Please enter the details of the new user.
+                                {{ $t('create_user_description') }}
                             </DialogDescription>
                         </DialogHeader>
 
                         <div class="grid gap-2">
                             <Label for="firstName" class="sr-only"
-                                >First name</Label
+                                >{{ $t('first_name') }}</Label
                             >
                             <Input
                                 id="firstName"
                                 name="firstName"
                                 ref="firstNameInput"
-                                placeholder="First name"
+                                :placeholder="$t('first_name')"
                             />
                             <InputError :message="errors.firstName" />
                         </div>
 
                         <div class="grid gap-2">
                             <Label for="lastName" class="sr-only"
-                                >Last name</Label
+                                >{{ $t('last_name') }}</Label
                             >
                             <Input
                                 id="lastName"
                                 name="lastName"
                                 ref="lastNameInput"
-                                placeholder="Last name"
+                                :placeholder="$t('last_name')"
                             />
                             <InputError :message="errors.lastName" />
                         </div>
@@ -96,7 +96,7 @@ import { Label } from '@/components/ui/label';
                                         }
                                     "
                                 >
-                                    Cancel
+                                    {{ $t('cancel') }}
                                 </Button>
                             </DialogClose>
 
@@ -106,7 +106,7 @@ import { Label } from '@/components/ui/label';
                                 :disabled="processing"
                                 data-test="confirm-create-user-button"
                             >
-                                Create User
+                                {{ $t('save') }}
                             </Button>
 
                         <Transition
@@ -119,7 +119,7 @@ import { Label } from '@/components/ui/label';
                                 v-show="recentlySuccessful"
                                 class="text-sm text-neutral-600"
                             >
-                                Sikeres mentés!
+                                {{ $t('saved') }}
                             </p>
                         </Transition>
                         </DialogFooter>

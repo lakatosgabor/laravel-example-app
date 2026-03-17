@@ -7,10 +7,12 @@ import { views as users} from '@/routes/users';
 import type { BreadcrumbItem } from '@/types';
 import { ref, watch } from 'vue';
 import CreateUser from '@/components/CreateUser.vue';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const breadcrumbItems: BreadcrumbItem[] = [
     {
-        title: 'Users',
+        title: t('users'),
         href: users(),
     },
 ];
@@ -43,26 +45,26 @@ watch(serverOptions, (value) => {
 }, { deep: true });
 
 const tableHeaders = [
-    {text: 'Név', value: "name", sortable: true},
+    {text: t('name'), value: "name", sortable: true},
     {text: 'Email', value: "email"}, 
-    {text: 'Szerepkör', value: "roles"},
-    {text: 'Létrehozva', value: "created_at", sortable: true}, 
+    {text: t('roles'), value: "roles"},
+    {text: t('created_at'), value: "created_at", sortable: true}, 
 ];
 
 </script>
 
 <template>
     <AppLayout :breadcrumbs="breadcrumbItems">
-        <Head title="Users" />
+        <Head :title="t('users')" />
 
-        <h1 class="sr-only">Users</h1>
+        <h1 class="sr-only">{{ $t('users') }}</h1>
 
         <AdminLayout>
             <div class="flex flex-col space-y-6">
                 <Heading
                     variant="small"
-                    title="Users"
-                    description="Manage your users"
+                    :title="$t('users')"
+                    :description="$t('manage_users')"
                 />      
             </div>
             <CreateUser />

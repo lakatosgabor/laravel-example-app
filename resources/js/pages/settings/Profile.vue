@@ -13,6 +13,9 @@ import SettingsLayout from '@/layouts/settings/Layout.vue';
 import { edit } from '@/routes/profile';
 import { send } from '@/routes/verification';
 import type { BreadcrumbItem } from '@/types';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 type Props = {
     mustVerifyEmail: boolean;
@@ -23,7 +26,7 @@ defineProps<Props>();
 
 const breadcrumbItems: BreadcrumbItem[] = [
     {
-        title: 'Profile settings',
+        title: t('profile_settings'),
         href: edit(),
     },
 ];
@@ -34,16 +37,14 @@ const user = computed(() => page.props.auth.user);
 
 <template>
     <AppLayout :breadcrumbs="breadcrumbItems">
-        <Head title="Profile settings" />
-
-        <h1 class="sr-only">Profile settings</h1>
+        <Head :title="$t('profile_settings')" />
 
         <SettingsLayout>
             <div class="flex flex-col space-y-6">
                 <Heading
                     variant="small"
-                    title="Profile information"
-                    description="Update your name and email address"
+                    :title="$t('profile_information')"
+                    :description="$t('profile_settings_desc')"
                 />
 
                 <Form
@@ -52,7 +53,7 @@ const user = computed(() => page.props.auth.user);
                     v-slot="{ errors, processing, recentlySuccessful }"
                 >
                     <div class="grid gap-2">
-                        <Label for="name">Name</Label>
+                        <Label for="name">{{ $t('name') }}</Label>
                         <Input
                             id="name"
                             class="mt-1 block w-full"
@@ -66,7 +67,7 @@ const user = computed(() => page.props.auth.user);
                     </div>
 
                     <div class="grid gap-2">
-                        <Label for="email">Email address</Label>
+                        <Label for="email">Email</Label>
                         <Input
                             id="email"
                             type="email"
@@ -75,20 +76,20 @@ const user = computed(() => page.props.auth.user);
                             :default-value="user.email"
                             required
                             autocomplete="username"
-                            placeholder="Email address"
+                            placeholder="Email"
                         />
                         <InputError class="mt-2" :message="errors.email" />
                     </div>
 
                     <div v-if="mustVerifyEmail && !user.email_verified_at">
                         <p class="-mt-4 text-sm text-muted-foreground">
-                            Your email address is unverified.
+                            {{ $t('email_verification_required') }}
                             <Link
                                 :href="send()"
                                 as="button"
                                 class="text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current! dark:decoration-neutral-500"
                             >
-                                Click here to resend the verification email.
+                                {{ $t('resend_verification_email') }}
                             </Link>
                         </p>
 
@@ -96,8 +97,7 @@ const user = computed(() => page.props.auth.user);
                             v-if="status === 'verification-link-sent'"
                             class="mt-2 text-sm font-medium text-green-600"
                         >
-                            A new verification link has been sent to your email
-                            address.
+                            {{ $t('new_verification_link_sent') }}
                         </div>
                     </div>
 
@@ -105,7 +105,7 @@ const user = computed(() => page.props.auth.user);
                         <Button
                             :disabled="processing"
                             data-test="update-profile-button"
-                            >Save</Button
+                            >{{ $t('save') }}</Button
                         >
 
                         <Transition
@@ -118,7 +118,7 @@ const user = computed(() => page.props.auth.user);
                                 v-show="recentlySuccessful"
                                 class="text-sm text-neutral-600"
                             >
-                                Saved.
+                                {{ $t('saved') }}
                             </p>
                         </Transition>
                     </div>

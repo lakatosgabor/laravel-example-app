@@ -11,27 +11,29 @@ import { show } from '@/routes/two-factor';
 import { edit as editPassword } from '@/routes/user-password';
 import type { NavItem } from '@/types';
 import { edit as editLanguage } from '@/routes/language';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 
 const sidebarNavItems: NavItem[] = [
     {
-        title: 'Profile',
+        title: t('profile'),
         href: editProfile(),
     },
     {
-        title: 'Password',
+        title: t('password'),
         href: editPassword(),
     },
     {
-        title: 'Two-factor auth',
+        title: t('two_factor_auth'),
         href: show(),
     },
     {
-        title: 'Appearance',
+        title: t('appearance'),
         href: editAppearance(),
     },
     {
-        title: 'Language',
+        title: t('language'),
         href: editLanguage(),
     },
 ];
@@ -42,8 +44,8 @@ const { isCurrentOrParentUrl } = useCurrentUrl();
 <template>
     <div class="px-4 py-6">
         <Heading
-            title="Settings"
-            description="Manage your profile and account settings"
+            :title="$t('profile_settings')"
+            :description="$t('profile_settings_desc')"
         />
 
         <div class="flex flex-col lg:flex-row lg:space-x-12">

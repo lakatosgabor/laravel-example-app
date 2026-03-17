@@ -55,6 +55,6 @@ class UsersController extends Controller
 
         Mail::to($user->email)->send(new WelcomeUserMail($user, $plainPassword));
 
-        return back()->with('successUpdate', 'Felhasználó létrehozva, a jelszót elküldtük e-mailben');
+        return back()->with('successUpdate', __('messages.user_has_been_created'));
     }
 }

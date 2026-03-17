@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { usePage, Link } from '@inertiajs/vue3';
-import { FolderGit2, LayoutGrid, ShieldHalf, ExternalLink, MonitorCog, MessagesSquare } from 'lucide-vue-next';
+import { LayoutGrid, ShieldHalf, ExternalLink, MonitorCog, MessagesSquare } from 'lucide-vue-next';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -17,10 +17,12 @@ import {
 import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
 import { views as admin } from '@/routes/admin';
+import { useI18n } from 'vue-i18n'
 
 const page = usePage();
 const user = page.props.auth?.user;
 const isSuperAdmin = user.roles.includes('super-admin');
+const { t } = useI18n();
 
 const mainNavItems: NavItem[] = [
     {
@@ -50,7 +52,7 @@ const footerNavItems: NavItem[] = [
 
 if (isSuperAdmin) {
     footerNavItems.push({
-        title: 'System error logs',
+        title: t('system_error_logs'),
         href: '/log-viewer',
         icon: MonitorCog,
     });

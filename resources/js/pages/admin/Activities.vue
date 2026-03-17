@@ -5,11 +5,12 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import AdminLayout from '@/layouts/admin/Layout.vue';
 import { views as activities} from '@/routes/activities';
 import type { BreadcrumbItem } from '@/types';
-import { defineProps } from 'vue';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const breadcrumbItems: BreadcrumbItem[] = [
     {
-        title: 'Activities',
+        title: t('activities'),
         href: activities(),
     },
 ];
@@ -20,11 +21,11 @@ const props = defineProps({
 });
 
 const headers = [
-  { text: "Dátum", value: "created_at", sortable: true },
-  { text: "Esemény", value: "description" },
-  { text: "Felhasználó", value: "causer" },
-  { text: "Modell", value: "subject_type" },
-  { text: "Részletek (Új vs Régi)", value: "properties" },
+  { text: t('created_at'), value: "created_at", sortable: true },
+  { text: t('description'), value: "description" },
+  { text: t('causer'), value: "causer" },
+  { text: t('subject_type'), value: "subject_type" },
+  { text: t('properties'), value: "properties" },
 ];
 
 const getStatusClass = (desc: string) => {
@@ -39,16 +40,16 @@ const getStatusClass = (desc: string) => {
 
 <template>
     <AppLayout :breadcrumbs="breadcrumbItems">
-        <Head title="Activities" />
+        <Head :title="$t('activities')" />
 
-        <h1 class="sr-only">Activities</h1>
+        <h1 class="sr-only">{{ $t('activities') }}</h1>
 
         <AdminLayout>
             <div class="flex flex-col space-y-6">
                 <Heading
                     variant="small"
-                    title="Activities"
-                    description="View activity logs for your application, including user actions and system events."
+                    :title="$t('activities')"
+                    :description="$t('activities_desc')"
                 />      
             </div>
 
@@ -77,7 +78,7 @@ const getStatusClass = (desc: string) => {
                         </span>
                     </div>
                     </div>
-                    <span v-else class="text-gray-400 italic">Nincs részlet</span>
+                    <span v-else class="text-gray-400 italic">{{ $t('no_details') }}</span>
                 </template>
 
                 <template #item-created_at="item">
