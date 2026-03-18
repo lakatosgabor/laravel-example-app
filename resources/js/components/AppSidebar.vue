@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { usePage, Link } from '@inertiajs/vue3';
-import { LayoutGrid, ShieldHalf, ExternalLink, MonitorCog, MessagesSquare } from 'lucide-vue-next';
+import { LayoutGrid, ShieldHalf, ExternalLink, MonitorCog, IdCardLanyard, ClipboardClock,
+    Contact, Network, GlobeLock, NotebookPen, GraduationCap, Key, PiggyBank, ScrollText } from 'lucide-vue-next';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -35,6 +36,56 @@ const mainNavItems: NavItem[] = [
         href: admin(),
         icon: ShieldHalf,
     },
+    {
+        title: 'Látogató lista',
+        href: "#",
+        icon: IdCardLanyard,
+    },
+    {
+        title: 'Túlóra igénylő',
+        href: "#",
+        icon: ClipboardClock,
+    },
+    {
+        title: 'Munkaerő igénylő',
+        href: "#",
+        icon: Contact,
+    },
+    {
+        title: 'Kölcsönzött munkaerő',
+        href: "#",
+        icon: Network,
+    },
+    {
+        title: 'Belső változás kezelés',
+        href: "#",
+        icon: GlobeLock,
+    },
+        {
+        title: 'LMS',
+        href: "#",
+        icon: NotebookPen,
+    },
+    {
+        title: 'Képzés igénylő',
+        href: "#",
+        icon: ScrollText,
+    },
+    {
+        title: 'ATS',
+        href: "#",
+        icon: GraduationCap,
+    },
+    {
+        title: 'KPI menedzsment',
+        href: "#",
+        icon: Key,
+    },
+    {
+        title: 'E-számla kezelő',
+        href: "#",
+        icon: PiggyBank,
+    },
 ];
 
 const footerNavItems: NavItem[] = [
@@ -42,11 +93,6 @@ const footerNavItems: NavItem[] = [
         title: 'GL solutions',
         href: "https://glsolutions.hu",
         icon: ExternalLink,
-    },
-    {
-        title: 'Chat',
-        href: "#",
-        icon: MessagesSquare,
     },
 ];
 
@@ -77,7 +123,7 @@ if (isSuperAdmin) {
         <SidebarContent>
             <NavMain :items="mainNavItems" />
         </SidebarContent>
-
+        <hr>
         <SidebarFooter>
             <NavFooter :items="footerNavItems" />
             <NavUser />
