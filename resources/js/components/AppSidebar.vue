@@ -18,6 +18,7 @@ import {
 import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
 import { views as admin } from '@/routes/admin';
+import { views as overtime } from '@/routes/overtime';
 import { useI18n } from 'vue-i18n'
 
 const page = usePage();
@@ -43,7 +44,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Túlóra igénylő',
-        href: "#",
+        href: overtime(),
         icon: ClipboardClock,
     },
     {

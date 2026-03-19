@@ -15,4 +15,23 @@ class AdminController extends Controller
             'currentLanguage' => auth()->user()->locale,
         ]);
     }
+
+    public function overtime(): Response{
+        return Inertia::render('requiring_overtime/Overtime', [
+            'currentLanguage' => auth()->user()->locale,
+        ]);
+    }
+
+    public function requests(): Response{
+        return Inertia::render('requiring_overtime/Requests', [
+            'currentLanguage' => auth()->user()->locale,
+        ]);
+    }
+
+    public function handleRequests(): Response{
+        return Inertia::render('requiring_overtime/HandleRequests', [
+            'currentLanguage' => auth()->user()->locale,
+        ]);
+    }
+
 }

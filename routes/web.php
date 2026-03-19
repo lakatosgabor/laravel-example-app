@@ -16,6 +16,11 @@ Route::get('/test-notify', function () {
 Route::inertia('/', 'Welcome')->name('home');
 
 Route::middleware(['auth', 'verified', 'web'])->group(function () {
+
+    Route::get('requiring_overtime/overtime_panel', [AdminController::class, 'overtime'])->name('overtime.views');
+    Route::get('requiring_overtime/requests', [AdminController::class, 'requests'])->name('overtime.requests');
+    Route::get('requiring_overtime/handle_requests', [AdminController::class, 'handleRequests'])->name('overtime.handleRequests');
+
     
     Route::get('/test-pdf', [PdfController::class, 'generateTestPdf'])->name('test-pdf');
     
