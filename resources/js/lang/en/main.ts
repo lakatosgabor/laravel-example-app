@@ -1,5 +1,3 @@
-import appearance from "@/routes/appearance";
-
 export default {
     save: 'Save',
     welcome_here: 'Welcome here!',

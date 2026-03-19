@@ -72,7 +72,7 @@ defineProps<{
                         required
                         :tabindex="2"
                         autocomplete="current-password"
-                        placeholder="{{ $t('password') }}"
+                        :placeholder="$t('password')"
                     />
                     <InputError :message="errors.password" />
                 </div>

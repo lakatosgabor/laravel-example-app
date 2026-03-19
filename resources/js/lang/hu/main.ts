@@ -1,7 +1,3 @@
-import activities from "@/routes/activities";
-import users from "@/routes/users";
-import { permission } from "process";
-
 export default {
     save: 'Mentés',
     welcome_here: 'Üdvözlünk itt!',
@@ -79,4 +75,5 @@ export default {
     properties: 'Tulajdonságok',
     activities_desc: 'Tekintsd meg az alkalmazásod tevékenységi naplóit, beleértve a felhasználói műveleteket és rendszereseményeket.',
     no_details: 'Nincsenek részletek',
+    forgot_password_question: 'Elfelejtetted a jelszavad?'
 }
